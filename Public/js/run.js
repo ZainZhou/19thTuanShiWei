@@ -402,8 +402,6 @@ $(function(){
                     $.get(personalLink,function(data){
                         if(data.status == 200){
                             right_num.html(data.data.correct);
-                            score_s.html(data.data.last_score);
-                            score_c.html(data.data.all_score);
                             person_rank_num.html(data.data.rank);
                             setTimeout(function(){
                                 $.mobile.changePage('#overPage',{
