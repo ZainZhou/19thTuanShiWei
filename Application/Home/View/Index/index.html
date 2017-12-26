@@ -20,6 +20,7 @@
     <script src = '__PUBLIC__/js/setStyle.js?v={:time()}'></script>
     <script src = '__PUBLIC__/js/QuestionClass.js?v={:time()}'></script>
     <script src = '__PUBLIC__/js/run.js?v={:time()}'></script>
+    <script src = '__PUBLIC__/js/info_controller.js?v={:time()}'></script>
     <link rel="stylesheet" href="__PUBLIC__/css/style.css?v={:time()}">
     <link rel="stylesheet" href="__PUBLIC__/css/animate.min.css?v={:time()}">
 </head>
@@ -72,7 +73,50 @@
         <ul class="info_list">
             <li>
                 <span class="info_name">姓名</span>
-                <
+                <input type="text" class="usr_name" data-role="none">
+            </li>
+            <li>
+                <span class="info_school">学校</span>
+                <div class="Spinner">
+                    <div class="seletor_trigger">
+
+                    </div>
+                    <input type="text" class="usr_school" disabled="disabled" data-role="none">
+                    <div class="arrow">
+                        <img src="__PUBLIC__/images/arrow_down.png" alt="" class="arrow_down">
+                    </div>
+                    <ul class="school_list">
+                        <div class="ghost_ele">
+                            <div class="li_holder">
+                                <li style="border-top: none">重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                                <li>重庆邮电大学</li>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <span class="info_phone">电话</span>
+                <input type="text" class="usr_phone" data-role="none">
             </li>
         </ul>
     </div>

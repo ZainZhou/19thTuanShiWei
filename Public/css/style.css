@@ -75,6 +75,89 @@
   float: left;
   text-shadow: 1.5px 0px 0px #6f4022, -1.5px 0px 0px #6f4022, 0px 1.5px 0px #6f4022, 0px -1.5px 0px #6f4022;
 }
+#infoPage .info_list {
+  width: 243px;
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+  margin-top: 25px;
+}
+#infoPage .info_list .Spinner {
+  float: right;
+  width: 184px;
+  position: relative;
+}
+#infoPage .info_list .Spinner .arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 152px;
+  top: 2px;
+  background-color: #ffae91;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+#infoPage .info_list .Spinner .arrow_down {
+  display: block;
+  width: 30px;
+  margin: 0 auto;
+}
+#infoPage .info_list .Spinner .seletor_trigger {
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  z-index: 100;
+}
+#infoPage .info_list .Spinner .school_list {
+  display: none;
+  position: absolute;
+  width: 150px;
+  left: 1px;
+  top: 34px;
+  list-style: none;
+  border: 1px solid #a96150;
+  border-top: none;
+  height: 175px;
+  overflow: hidden;
+}
+#infoPage .info_list .Spinner .school_list .ghost_ele {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#infoPage .info_list .Spinner .school_list .ghost_ele .li_holder {
+  position: absolute;
+  width: 100%;
+}
+#infoPage .info_list .Spinner .school_list li {
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  border-top: 1px solid #a96150;
+  height: 35px;
+  line-height: 35px;
+  font-size: 13px;
+}
+#infoPage .info_list > li {
+  height: 34px;
+  line-height: 34px;
+  margin-bottom: 20px;
+}
+#infoPage .info_list span {
+  float: left;
+  color: #FFFFFF;
+  font-family: hb;
+  font-size: 18px;
+  text-shadow: 1.5px 0px 0px #6f4022, -1.5px 0px 0px #6f4022, 0px 1.5px 0px #6f4022, 0px -1.5px 0px #6f4022;
+}
+#infoPage .info_list input {
+  float: right;
+  border-radius: 5px;
+  border: 2px solid #a96150;
+  width: 170px;
+  padding: 5px 5px;
+  background-color: #FFFFFF;
+}
 #homePage {
   height: 100%;
   background: url("../images/homePage_back.jpg") bottom no-repeat #fad87b;
