@@ -3,11 +3,6 @@
   margin: 0;
   text-shadow: none;
 }
-//#beginPage,#backPage,#gamePage,#overPage,#listPage{
-//  position: relative;
-//  background:url("../images/Page_back.jpg")center no-repeat;
-//  background-size: 100% 100%;
-//}
 @font-face {
   font-family: 'hb';
   src: url('../font/hb.ttf');
@@ -49,9 +44,40 @@
   z-index: 100;
   background: rgba(0,0,0,0.6);
 }
+#infoPage{
+  background: url("../images/gamePage.jpg")center no-repeat;
+  background-size: 100% 100%;
+  .user_avatar{
+    width: 19%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15%;
+    border-radius: 50%;
+    border: 2px solid #623118;
+  }
+  .info_nickname{
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    color: #7db5fa;
+    font-size: 19px;
+    text-shadow: 1.5px 0px 0px #6f4022,-1.5px 0px 0px #6f4022,0px 1.5px 0px #6f4022,0px -1.5px 0px #6f4022;
+  }
+  .info_title{
+    width: 100%;
+    text-align: center;
+    font-family: hb;
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    float: left;
+    text-shadow: 1.5px 0px 0px #6f4022,-1.5px 0px 0px #6f4022,0px 1.5px 0px #6f4022,0px -1.5px 0px #6f4022;
+  }
+}
 #homePage{
   height: 100%;
-  background: url("../images/homePage_back.jpg")center no-repeat;
+  background: url("../images/homePage_back.jpg")bottom no-repeat #fad87b;
   background-size: 100% 100%;
   position: relative;
   .programerHolder{

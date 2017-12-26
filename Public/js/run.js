@@ -2,16 +2,16 @@
  * Created by Zain on 6/11/2017.
  */
 
-var questionLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/getQuestion";
-var answerLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/answer";
-var personalLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/personal";
-var rankLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/personRank";
-var classrankLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/classRank";
-//var questionLink = "/19thQuestionAnswer/index.php/Home/Index/getQuestion";
-//var answerLink = "/19thQuestionAnswer/index.php/Home/Index/answer";
-//var personalLink = "/19thQuestionAnswer/index.php/Home/Index/personal";
-//var rankLink = "/19thQuestionAnswer/index.php/Home/Index/personRank";
-//var classrankLink = "/19thQuestionAnswer/index.php/Home/Index/classRank";
+//var questionLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/getQuestion";
+//var answerLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/answer";
+//var personalLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/personal";
+//var rankLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/personRank";
+//var classrankLink = "https://wx.idsbllp.cn/game/19thQuestionAnswer/index.php/Home/Index/classRank";
+var questionLink = "/19thQuestionAnswer/index.php/Home/Index/getQuestion";
+var answerLink = "/19thQuestionAnswer/index.php/Home/Index/answer";
+var personalLink = "/19thQuestionAnswer/index.php/Home/Index/personal";
+var rankLink = "/19thQuestionAnswer/index.php/Home/Index/personRank";
+var classrankLink = "/19thQuestionAnswer/index.php/Home/Index/classRank";
 function fillQuestion(data,qc,ops,ops_sell){
     for(var i = 0 ; i < ops.length ; i++){
         ops[i].css('display','none');
@@ -405,8 +405,6 @@ $(function(){
                     $.get(personalLink,function(data){
                         if(data.status == 200){
                             right_num.html(data.data.correct);
-                            score_s.html(data.data.last_score);
-                            score_c.html(data.data.all_score);
                             person_rank_num.html(data.data.rank);
                             setTimeout(function(){
                                 $.mobile.changePage('#overPage',{
