@@ -162,6 +162,38 @@ class IndexController extends BaseController {
         ));
     }
 
+    public function udpatePersonalInfo() {
+        $phone = I('post.phone');
+        $school = I('post.school');
+        $level = I('post.level'); //level我来取
+        $name = I('post.name'); //万一不和谐呢
+        if (!$this->isMobile($phone)) {
+            $this->ajaxReturn(array(
+                'status' => 403,
+                'info'   => '请输入正确格式的手机号~'
+            ));
+        }
+        $openid = session('openid');
+        M('users')->where(array('openid' => $openid))->save(
+            array(
+                'phone' => $phone,
+                'school' => $school,
+                'level' => $level,
+                'name'  => $name,
+            )
+        );
+        $this->ajaxReturn(array(
+            'status' => 200,
+            'info'   => '成功'
+        ));
+    }
+
+    private function isMobile($mobile) {
+        if (!is_numeric($mobile)) {
+            return false;
+        }
+        return preg_match('#^13[\d]{9}$|^14[5,7]{1}\d{8}$|^15[^4]{1}\d{8}$|^17[0,3,6,7,8]{1}\d{8}$|^18[\d]{9}$#', $mobile) ? true : false;
+    }
 
     private function getSelect($id = null) {
         if ($id != null) {
