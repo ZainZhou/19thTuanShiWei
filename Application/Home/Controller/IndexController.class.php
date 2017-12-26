@@ -8,7 +8,7 @@ use Think\Model;
 class IndexController extends BaseController {
     private $appid = 'wx81a4a4b77ec98ff4';
     private $acess_token = 'gh_68f0a1ffc303';
-    private $total = 5;
+    private $total = 10;
     public function index() {
         $signature = $this->JSSDKSignature();
         $this->assign('signature', $signature);
@@ -22,33 +22,16 @@ class IndexController extends BaseController {
         $users = M('users');
         $openid = session('openid');
         $data = $users->where(array('openid' => $openid))->find();
-        if ($data['current_exam_process'] < 2) {
-            if($isNew || $data['last_question_id'] == 0) {
-                $question = $this->getJudge();
-            } else {
-                $question = $this->getJudge($data['last_question_id']);
-            }
-            if ($data['current_exam_process'] == 0) {
-                $data['last_score'] = 0;
-                $data['current_exam_process'] += 1;
-            }
-        } elseif (1 < $data['current_exam_process'] && $data['current_exam_process'] < 4) {
-            if($isNew) {
-                $question = $this->getFillBlank();
-            } else {
-                $question = $this->getFillBlank($data['last_question_id']);
-            }
-        } elseif (3 < $data['current_exam_process'] && $data['current_exam_process'] < 6) {
-            if($isNew) {
-                $question = $this->getSelect();
-            } else {
-                $question = $this->getSelect($data['last_question_id']);
-            }
+
+        if ($data['current_exam_process'] == 0) {
+            $data['last_score'] = 0;
+            $data['current_exam_process'] += 1;
+        }
+        $rank = rand(0, 10);
+        if ($rank%2 == 0) {
+            $question = $this->getJudge();
         } else {
-            $this->ajaxReturn(array(
-                'status'  => 500,
-                'info' => 'server error'
-            ));
+            $question = $this->getSelect();
         }
         $data['last_question_id'] = $question['id'];
         $users->where(array('openid' => $openid))->save($data);
@@ -58,6 +41,49 @@ class IndexController extends BaseController {
             'current' => $data['current_exam_process']
         ));
     }
+
+//    public function getQuestion() {
+//        $isNew = I('post.new', 'new');
+//        $isNew = $isNew == 'true' ? true:false;
+//        $users = M('users');
+//        $openid = session('openid');
+//        $data = $users->where(array('openid' => $openid))->find();
+//        if ($data['current_exam_process'] < 2) {
+//            if($isNew || $data['last_question_id'] == 0) {
+//                $question = $this->getJudge();
+//            } else {
+//                $question = $this->getJudge($data['last_question_id']);
+//            }
+//            if ($data['current_exam_process'] == 0) {
+//                $data['last_score'] = 0;
+//                $data['current_exam_process'] += 1;
+//            }
+//        } elseif (1 < $data['current_exam_process'] && $data['current_exam_process'] < 4) {
+//            if($isNew) {
+//                $question = $this->getFillBlank();
+//            } else {
+//                $question = $this->getFillBlank($data['last_question_id']);
+//            }
+//        } elseif (3 < $data['current_exam_process'] && $data['current_exam_process'] < 6) {
+//            if($isNew) {
+//                $question = $this->getSelect();
+//            } else {
+//                $question = $this->getSelect($data['last_question_id']);
+//            }
+//        } else {
+//            $this->ajaxReturn(array(
+//                'status'  => 500,
+//                'info' => 'server error'
+//            ));
+//        }
+//        $data['last_question_id'] = $question['id'];
+//        $users->where(array('openid' => $openid))->save($data);
+//        $this->ajaxReturn(array(
+//            'status'  => 200,
+//            'data'    => $question,
+//            'current' => $data['current_exam_process']
+//        ));
+//    }
 
     //有个逻辑漏洞, 一直无限post这个接口就哈哈哈哈
     public function answer() {
