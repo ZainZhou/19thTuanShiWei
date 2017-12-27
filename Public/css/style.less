@@ -47,6 +47,53 @@
 #infoPage{
   background: url("../images/gamePage.jpg")center no-repeat;
   background-size: 100% 100%;
+  position: relative;
+  .tip_box{
+    position: absolute;
+    //display: none;
+    width: 240px;
+    height: 210px;
+    top: 26%;
+    background-color: #fbf8e7;
+    z-index: 101;
+    border-radius: 20px;
+    box-shadow:0 0 0 1px #714223 ,0 0 0 5px #fa865e,0 0 0 6px #714223;
+    .close_tip{
+      float: right;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 1px solid #68341a;
+      background: url("../images/cross.png")center no-repeat #fbab75;
+      background-size: 42% 42%;
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+    .tip_state{
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      border: 1px solid #68341a;
+      background: url("../images/tick.png")center no-repeat #f7c93b;
+      background-size: 50% 50%;
+      border-radius: 50%;
+      margin-top: 30px;
+    }
+    .tip_info{
+      text-align: center;
+      width: 100%;
+      color: #fa865e;
+      margin: 10px auto;
+    }
+    .startBtn{
+      font-size: 13px;
+      width: 85px;
+      height: 22px;
+      line-height: 24px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+  }
   .user_avatar{
     width: 19%;
     display: block;
@@ -123,6 +170,7 @@
           .li_holder{
             position: absolute;
             width: 100%;
+            z-index: 10;
           }
         }
         li{
@@ -133,6 +181,7 @@
           height: 35px;
           line-height: 35px;
           font-size: 13px;
+          cursor: pointer;
         }
       }
     }
@@ -156,6 +205,10 @@
       padding: 5px 5px;
       background-color: #FFFFFF;
     }
+  }
+  .apply_info{
+    margin: 0 auto;
+    margin-top: 40px;
   }
 }
 #homePage{

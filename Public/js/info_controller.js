@@ -6,9 +6,45 @@ $(function(){
     var startPos;
     var seletor_trigger = $('.seletor_trigger');
     var school_list = $('.school_list');
-    var aLi = school_list.find('li');
-    var h = 16*36+5;
+    var aLi = li_holder.find('li');
+    var h = 60*36+5;
     var usr_school = $('.usr_school');
+    var apply_info = $('.apply_info');
+    var info_input = $('.info_list > li > input');
+    var info_path = "";
+    var close_tip = $('.close_tip');
+    var tip_box = $('.tip_box');
+    close_tip.on('click',function(){
+       tip_box.hide();
+        $.mobile.changePage('#homePage',{
+            transition:'flow'
+        });
+    });
+    apply_info.on('click',function(){
+        $.mobile.loading('show');
+        var _data = {};
+        _data.name = $('.usr_name').val();
+        _data.school = $('.usr_school').val();
+        _data.phone = $('.usr_phone').val();
+        for(var index in _data){
+            if(_data[index].length == 0){
+                $.mobile.loading('hide');
+                alert("请把信息补充完整再提交!");
+                return false;
+            }
+        }
+        $.post(info_path,_data,function(data){
+            $.mobile.loading('hide');
+            if(data.status == 200){
+                tip_box.show();
+                $('.usr_name').val("");
+                $('.usr_school').val("");
+                $('.usr_phone').val("");
+            }else{
+                alert(data.status);
+            }
+        })
+    });
     seletor_trigger.on('click',function(){
         if(school_list.css('display') == 'block'){
             school_list.hide();
@@ -18,10 +54,9 @@ $(function(){
     });
     aLi.on('click',function(){
         usr_school.val($(this).html());
-        console.log(1);
+        school_list.hide();
     });
     li_holder[0].addEventListener('touchstart',function(e){
-        e.preventDefault();
         var touch = e.touches[0];
         startPos = touch.pageY;
     });
