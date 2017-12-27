@@ -505,37 +505,38 @@
   margin-top: 1%;
   margin-bottom: 3%;
 }
-#classRankPage {
+#UniversityRankPage {
   background: linear-gradient(#f9d166, #fcdf90);
   position: relative;
 }
-#classRankPage .copyright {
+#UniversityRankPage .copyright {
   float: left;
   color: #fa9f3e;
   margin-top: 5%;
 }
-#classRankPage .btnContainer {
+#UniversityRankPage .btnContainer {
   width: 85%;
   margin: 5% auto;
   text-align: center;
 }
-#classRankPage .btnContainer div {
+#UniversityRankPage .btnContainer div {
   display: inline-block;
-  font-size: 14px;
-  width: 35%;
+  font-size: 13px;
+  padding: 6px 0;
+  width: 95px;
 }
-#classRankPage .list_container {
+#UniversityRankPage .list_container {
   width: 100%;
   position: relative;
 }
-#classRankPage .list_container .list_title {
+#UniversityRankPage .list_container .list_title {
   width: 64.67%;
   position: relative;
   left: -14%;
   top: 0;
   z-index: 100;
 }
-#classRankPage .list_container .rank_list {
+#UniversityRankPage .list_container .rank_list {
   width: 84.5%;
   margin: 0 auto;
   margin-top: -15%;
@@ -544,7 +545,7 @@
   border-radius: 10px;
   background: #fcf8e8;
 }
-#classRankPage .list_container .rank_list .user_avatar {
+#UniversityRankPage .list_container .rank_list .user_avatar {
   width: 23.3%;
   display: block;
   margin: 0 auto;
@@ -552,58 +553,58 @@
   border-radius: 50%;
   border: 2px solid #623118;
 }
-#classRankPage .list_container .rank_list .nickname {
+#UniversityRankPage .list_container .rank_list .nickname {
   color: #fcb103;
   font-weight: 700;
   text-align: center;
   margin-top: 1.2%;
   margin-bottom: 3%;
 }
-#classRankPage .list_container .rank_list .rank {
+#UniversityRankPage .list_container .rank_list .rank {
   text-align: center;
   color: #e87d60;
   font-family: hb;
 }
-#classRankPage .list_container .rank_list .rank .classranknum {
+#UniversityRankPage .list_container .rank_list .rank .classranknum {
   font-family: hb;
   color: #53ccc1;
   font-size: 25px;
 }
-#classRankPage .list_container .rank_list .studyBtn {
+#UniversityRankPage .list_container .rank_list .studyBtn {
   display: block;
   margin: 3% auto;
   width: 29.167%;
 }
-#classRankPage .list_container .rank_list .classlist_rank {
+#UniversityRankPage .list_container .rank_list .classlist_rank {
   list-style: none;
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
   padding-bottom: 10px;
 }
-#classRankPage .list_container .rank_list .classlist_rank li {
+#UniversityRankPage .list_container .rank_list .classlist_rank li {
   width: 90%;
   overflow: hidden;
   padding: 3% 5%;
 }
-#classRankPage .list_container .rank_list .classlist_rank li span {
+#UniversityRankPage .list_container .rank_list .classlist_rank li span {
   color: #f46e49;
 }
-#classRankPage .list_container .rank_list .classlist_rank li .list_college {
+#UniversityRankPage .list_container .rank_list .classlist_rank li .list_college {
   border-radius: 50%;
   float: left;
   font-size: 12px;
   width: 33%;
   padding-top: 5%;
 }
-#classRankPage .list_container .rank_list .classlist_rank li .list_classNum {
+#UniversityRankPage .list_container .rank_list .classlist_rank li .list_classNum {
   font-size: 13px;
   font-weight: 600;
   float: left;
   margin-left: 5%;
   margin-top: 5%;
 }
-#classRankPage .list_container .rank_list .classlist_rank li .list_ranknum {
+#UniversityRankPage .list_container .rank_list .classlist_rank li .list_ranknum {
   font-family: hb;
   font-size: 20px;
   float: right;
@@ -611,7 +612,7 @@
   padding: 2% 0;
   color: #fc932b;
 }
-#classRankPage .list_container .rank_list .classlist_rank li .medal {
+#UniversityRankPage .list_container .rank_list .classlist_rank li .medal {
   float: right;
   width: 10.5%;
   margin-top: 1%;
@@ -632,8 +633,9 @@
 }
 #rankPage .btnContainer div {
   display: inline-block;
-  font-size: 14px;
-  width: 35%;
+  font-size: 13px;
+  padding: 6px 0;
+  width: 95px;
 }
 #rankPage .list_container {
   width: 100%;

@@ -7,7 +7,7 @@ var questionLink = prefix + "/index.php/Home/Index/getQuestion";
 var answerLink = prefix + "/index.php/Home/Index/answer";
 var personalLink = prefix + "/index.php/Home/Index/personal";
 var rankLink = prefix + "/index.php/Home/Index/personRank";
-var classrankLink = prefix + "/index.php/Home/Index/classRank";
+var universityrankLink = prefix + "/index.php/Home/Index/classRank";
 
 function fillQuestion(data,qc,ops,ops_sell){
     for(var i = 0 ; i < ops.length ; i++){
@@ -69,13 +69,13 @@ $(function(){
     var Description = $('.Description');
     var ranks = $('.list_rank');
     var top3 = ranks.find('li');
-    var classRankBtn = $('.classRank');
+    var universityRankBtn = $('.universityRank');
     var classranks = $('.classlist_rank');
     var top3class = classranks.find('li');
     var rankBtn_flag = 0;
     var classranknum = $('.classranknum');
     var rank_load = 0;
-    var classrankBtn_flag = 0;
+    var universityrankBtn_flag = 0;
     var returnHome = $('.returnHome');
     var classrank_load = 0;
     var personalRank = $('.personalRank');
@@ -108,15 +108,15 @@ $(function(){
             transition:'flow'
         })
     });
-    classRankBtn.on('click',function(){
-        if(classrankBtn_flag){
+    universityRankBtn.on('click',function(){
+        if(universityrankBtn_flag){
             return false
         }
-        classrankBtn_flag = 1;
+        universityrankBtn_flag = 1;
         $.mobile.loading('show');
-        $.get(classrankLink,function(data){
+        $.get(universityrankLink,function(data){
             $.mobile.loading('hide');
-            classrankBtn_flag = 0;
+            universityrankBtn_flag = 0;
             if(data.status == 200){
                 user_avatar.attr('src',data.data.personal.avatar);
                 nickname.html(data.data.personal.nickname);
@@ -137,7 +137,7 @@ $(function(){
                             }
                         }
                     }
-                    $.mobile.changePage('#classRankPage',{
+                    $.mobile.changePage('#UniversityRankPage',{
                         transition: 'flow'
                     });
                     return false;
@@ -156,7 +156,7 @@ $(function(){
                     }
                     classrank_load = 1;
                 }
-                $.mobile.changePage('#classRankPage',{
+                $.mobile.changePage('#UniversityRankPage',{
                     transition: 'flow'
                 })
             }else{
