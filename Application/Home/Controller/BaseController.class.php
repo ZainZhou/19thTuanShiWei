@@ -50,23 +50,23 @@ class BaseController extends Controller {
         } else {
             $data = array();
             $img = I('get.headimgurl', '');
-            $req = array(
-                'token' => 'gh_68f0a1ffc303',
-                'timestamp' => '1509870994',
-                'string' => 'ghjklkjh',
-                'secret' => 'e5678834a084914e9362181b40ca60675a82bea2',
-                'openid' => $openid
-            );
-            $ret = $this->curl_api($this->oauthDomain.'/MagicLoop/index.php?s=/addon/Api/Api/bindVerify', $req);
-            if($ret['status'] == 200){
-                $data['stu_id'] = $ret['stuId'] ? $ret['stuId']:'';
-                $class_id = M('class')->where(array('stu_id' => $ret['stuId']))->getField('class_id');
-                if (APP_DEBUG) {
-                    $class_id = '12011501';
-                }
-                $data['class_id'] = $class_id ? $class_id:'';
-                $users->where(array('openid' => $openid))->save($data);
-            }
+//            $req = array(
+//                'token' => 'gh_68f0a1ffc303',
+//                'timestamp' => '1509870994',
+//                'string' => 'ghjklkjh',
+//                'secret' => 'e5678834a084914e9362181b40ca60675a82bea2',
+//                'openid' => $openid
+//            );
+//            $ret = $this->curl_api($this->oauthDomain.'/MagicLoop/index.php?s=/addon/Api/Api/bindVerify', $req);
+//            if($ret['status'] == 200){
+//                $data['stu_id'] = $ret['stuId'] ? $ret['stuId']:'';
+//                $class_id = M('class')->where(array('stu_id' => $ret['stuId']))->getField('class_id');
+//                if (APP_DEBUG) {
+//                    $class_id = '12011501';
+//                }
+//                $data['class_id'] = $class_id ? $class_id:'';
+//                $users->where(array('openid' => $openid))->save($data);
+//            }
             if ($nickname && $img != '') {
                 $data['nickname'] = $nickname;
                 $data['avatar'] = urldecode($img);
