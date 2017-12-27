@@ -10,8 +10,16 @@ class IndexController extends BaseController {
     private $acess_token = 'gh_68f0a1ffc303';
     private $total = 10;
     public function index() {
+        $openid = session('openid');
+
+        $user = M('user')->where(array('openid' => $openid))->find();
+        $isComplete = 1;
+        if ($user['level'] == '') {
+            $isComplete = 0;
+        }
         $signature = $this->JSSDKSignature();
         $this->assign('signature', $signature);
+        $this->assign('isComplete', $isComplete);
         $this->assign('appid', $this->appid);
         $this->display();
     }
