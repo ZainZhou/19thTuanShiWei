@@ -10,8 +10,16 @@ class IndexController extends BaseController {
     private $acess_token = 'gh_68f0a1ffc303';
     private $total = 10;
     public function index() {
+        $openid = session('openid');
+
+        $user = M('user')->where(array('openid' => $openid))->find();
+        $isComplete = 1;
+        if ($user['level'] == '') {
+            $isComplete = 0;
+        }
         $signature = $this->JSSDKSignature();
         $this->assign('signature', $signature);
+        $this->assign('isComplete', $isComplete);
         $this->assign('appid', $this->appid);
         $this->display();
     }
@@ -35,6 +43,7 @@ class IndexController extends BaseController {
         }
         $data['last_question_id'] = $question['id'];
         $users->where(array('openid' => $openid))->save($data);
+        session('time', time());
         $this->ajaxReturn(array(
             'status'  => 200,
             'data'    => $question,
@@ -100,7 +109,6 @@ class IndexController extends BaseController {
         $data = $users->where(array('openid' => $openid))->find();
         //不直接$isCorrect, 而是这样写是有原因的
         if($isCorrect == 'true' || $isCorrect === true) {
-            $data['avg_time'] = time();
             $data['answer_num'] += 1;
             $data['all_score'] += 20;
             $data['last_score'] += 20;
@@ -108,6 +116,13 @@ class IndexController extends BaseController {
         }
         $data['current_exam_process'] += 1;
         if ($data['current_exam_process'] > $this->total) {
+            if ($data['last_score'] == 200) {//太僵硬了, 采用欺骗的手段了
+                $past = session('time');
+                $now = time();
+               if($data['avg_time'] > $now - $past || $data['avg_time'] == 0 )  {
+                   $data['avg_time'] = $now - $past;
+               }
+            }
             $data['current_exam_process'] = 0;
             $data['last_question_id'] = 0;
         }
@@ -123,12 +138,12 @@ class IndexController extends BaseController {
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
         $model = new Model();
-        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by all_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
+        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by top_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
         $rank = $row[0]['rank'];
         $data = array(
             'correct' => $user['last_score']/20,
             'last_score' => $user['last_score'],
-            'all_score' => $user['all_score'],
+            'top_score' => $user['top_score'],
             'rank' => $rank,
         );
         $this->ajaxReturn(array(
@@ -140,11 +155,11 @@ class IndexController extends BaseController {
     public function personRank() {
         $openid = session('openid');
         $model = new Model();
-        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by all_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
+        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by top_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
         $rank = $row[0]['rank'];
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
-        $list = $users->order('all_score desc, avg_time asc')->field('nickname, avatar, all_score')->limit(50)->select();
+        $list = $users->order('top_score desc, avg_time asc')->field('nickname, avatar, top_score')->limit(50)->select();
         $i = 0;
         foreach ($list as &$v) {
             $i++;
@@ -163,13 +178,14 @@ class IndexController extends BaseController {
         ));
     }
 
-    public function classRank() {
+    public function schoolRank() {
+        $level = I('get.level', 'benke');
         $openid = session('openid');
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
         $model = new Model();
-        $rows = $model->query("select DISTINCT b.class_id, college, rank from (select *, (@rank := @rank + 1)rank from (select class_id, sum(all_score) as score from users where class_id != '' group by class_id order by score desc limit 50)t, (select @rank := 0)a)b inner join class on b.class_id = class.class_id order by rank asc");
-        $row = $model->query("select DISTINCT b.class_id, college, rank from (select *, (@rank := @rank + 1)rank from (select class_id, sum(all_score) as score from users where class_id != '' group by class_id order by score desc)t, (select @rank := 0)a)b inner join class on b.class_id = class.class_id where b.class_id='".$user['class_id']."'");
+        $rows = $model->query("select school, nickname, avatar, rank from (select *, (@rank := @rank + 1)rank from (select * from users where school != '' and level = '$level' order by top_score desc, avg_time asc limit 50)t, (select @rank := 0)a)b");
+        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by top_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
         $rank = '∞';
         if (count($row) != 0) {
             $rank = $row[0]['rank'];
@@ -191,7 +207,6 @@ class IndexController extends BaseController {
     public function udpatePersonalInfo() {
         $phone = I('post.phone');
         $school = I('post.school');
-        $level = I('post.level'); //level我来取
         $name = I('post.name'); //万一不和谐呢
         if (!$this->isMobile($phone)) {
             $this->ajaxReturn(array(
@@ -200,6 +215,7 @@ class IndexController extends BaseController {
             ));
         }
         $openid = session('openid');
+        $level = M('school')->where(array('school' => $school))->getField('level');
         M('users')->where(array('openid' => $openid))->save(
             array(
                 'phone' => $phone,
@@ -333,6 +349,23 @@ class IndexController extends BaseController {
         return $buff;
     }
 
-
+//    public function dataEdit() {
+//        $table = M('select');
+//        $data = $table->select();
+//        foreach ($data as $v) {
+////            $v['question'] = trim($v['question']);
+//
+//            $answer = '';
+//            for($i =0 ; $i < mb_strlen($v['answer'], 'utf-8') ; $i++) {
+//                $sub_str = mb_substr($v['answer'], $i, 1);
+//                if(ctype_upper($sub_str)){
+//                    $answer .= $sub_str;
+//                }
+//            }
+//            $v['answer'] = $answer;
+//            var_dump($v);
+//            $table->where(array('id' => $v['id']))->save($v);
+//        }
+//    }
 
 }

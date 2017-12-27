@@ -25,5 +25,5 @@ return array(
     'DB_PREFIX'             =>  '',    	// 数据库表前缀
     'DB_FIELDTYPE_CHECK' => false,       // 是否进行字段类型检查
     'DB_FIELDS_CACHE' => false,        // 启用字段缓存
-    'DB_CHARSET' => 'utf8',
+    'DB_CHARSET' => 'utf8mb4',
 );
