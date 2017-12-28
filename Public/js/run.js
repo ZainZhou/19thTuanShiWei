@@ -63,22 +63,41 @@ $(function(){
     var user_avatar = $('.user_avatar');
     var ranknum = $('.ranknum');
     var RankBtn = $('.RankBtn');
+    var uRankBtn = $('.universityRank');
+    var cRankBtn = $('.collegeRank');
     var nickname = $('.nickname');
     var judged = null;
     var filled = [];
     var QuestionType = $('.QuestionType');
     var Description = $('.Description');
     var ranks = $('.list_rank');
+    var uranks = $('.list_urank');
+    var cranks = $('.list_crank');
     var top3 = ranks.find('li');
+    var utop3 = uranks.find('li');
+    var ctop3 = cranks.find('li');
     var rankBtn_flag = 0;
+    var urankBtn_flag = 0;
+    var crankBtn_flag = 0;
     var rank_load = 0;
+    var urank_load = 0;
+    var crank_load = 0;
     var returnHome = $('.returnHome');
     var personalRank = $('.personalRank');
     var saveTop3 = ranks.html();
+    var usaveTop3 = uranks.html();
+    var csaveTop3 = cranks.html();
     var closeP = $('.closeP');
     var mask = $('.mask');
     var programerHolder = $('.programerHolder');
     var d_btn = $('.developer_btn');
+    var return_home = $('.return_home');
+    return_home.on('click',function(){
+        console.log(2);
+        $.mobile.changePage('#homePage',{
+            transition:'slide'
+        })
+    });
     d_btn.on('click',function(){
        mask.css('display','block');
        programerHolder.css('display','block');
@@ -161,6 +180,121 @@ $(function(){
             transition:'flow'
         })
     });
+
+
+    uRankBtn.on('click',function(){
+        if(urankBtn_flag){
+            return false
+        }
+        urankBtn_flag = 1;
+        $.mobile.loading('show');
+        $.get(universityrankLink,function(data){
+            $.mobile.loading('hide');
+            urankBtn_flag = 0;
+            if(data.status == 200){
+                user_avatar.attr('src',data.data.personal.avatar);
+                nickname.html(data.data.personal.nickname);
+                ranknum.html(data.data.personal.rank);
+                console.log(urank_load);
+                if(urank_load){
+                    uranks.html("");
+                    uranks.html(usaveTop3);
+                    utop3 = uranks.find('li');
+                    for(var i = 0 ; i < data.data.list.length ; i++){
+                        if(i<3){
+                            utop3.eq(i).find('.u_name').html(data.data.list[i].school);
+                        }else{
+                            if(i%2 == 0){
+                                uranks.append('<li style="background: #feebcb"><span class="u_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }else{
+                                uranks.append('<li><span class="u_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }
+                        }
+                    }
+                    $.mobile.changePage('#uRankPage',{
+                        transition: 'flow'
+                    });
+                    return false;
+                }else{
+                    for(var i = 0 ; i < data.data.list.length ; i++){
+                        if(i<3){
+                            utop3.eq(i).find('.u_name').html(data.data.list[i].school);
+                        }else{
+                            if(i%2 == 0){
+                                uranks.append('<li style="background: #feebcb"><span class="u_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }else{
+                                uranks.append('<li><span class="u_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }
+                        }
+                    }
+                    urank_load = 1;
+                }
+                $.mobile.changePage('#uRankPage',{
+                    transition: 'flow'
+                })
+            }else {
+                alert(data.status);
+            }
+        });
+    });
+
+    cRankBtn.on('click',function(){
+        if(crankBtn_flag){
+            return false
+        }
+        crankBtn_flag = 1;
+        $.mobile.loading('show');
+        $.get(collegerankLink,function(data){
+            $.mobile.loading('hide');
+            crankBtn_flag = 0;
+            if(data.status == 200){
+                user_avatar.attr('src',data.data.personal.avatar);
+                nickname.html(data.data.personal.nickname);
+                ranknum.html(data.data.personal.rank);
+                if(crank_load){
+                    cranks.html("");
+                    cranks.html(csaveTop3);
+                    ctop3 = cranks.find('li');
+                    for(var i = 0 ; i < data.data.list.length ; i++){
+                        if(i<3){
+                            ctop3.eq(i).find('.c_name').html(data.data.list[i].school);
+                        }else{
+                            if(i%2 == 0){
+                                cranks.append('<li style="background: #feebcb"><span class="c_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }else{
+                                cranks.append('<li><span class="c_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }
+                        }
+                    }
+                    $.mobile.changePage('#cRankPage',{
+                        transition: 'flow'
+                    });
+                    return false;
+                }else{
+                    for(var i = 0 ; i < data.data.list.length ; i++){
+                        if(i<3){
+                            ctop3.eq(i).find('.c_name').html(data.data.list[i].school);
+                        }else{
+                            if(i%2 == 0){
+                                cranks.append('<li style="background: #feebcb"><span class="c_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }else{
+                                cranks.append('<li><span class="c_name">'+data.data.list[i].school+'</span><span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
+                            }
+                        }
+                    }
+                    crank_load = 1;
+                }
+                $.mobile.changePage('#cRankPage',{
+                    transition: 'flow'
+                })
+            }else {
+                alert(data.status);
+            }
+        });
+    });
+
+
+
     startBtn.on('click',function(){
         if(start_flag){
             return false

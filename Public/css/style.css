@@ -24,6 +24,18 @@
   font-size: 22px;
   text-shadow: 1.5px 0px 0px #6f4022, -1.5px 0px 0px #6f4022, 0px 1.5px 0px #6f4022, 0px -1.5px 0px #6f4022;
 }
+.return_home {
+  position: absolute;
+  background: url("../images/return_home.png") center no-repeat #6f90fd;
+  background-size: 50% 50%;
+  width: 30px;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 50%;
+  top: 8px;
+  border: 2px solid #623118;
+  z-index: 10;
+}
 .b_btn {
   background: url("../images/blue_btn.png") center center no-repeat;
   background-size: 100% 100%;
@@ -714,6 +726,110 @@
   color: #fc932b;
 }
 #uRankPage .list_container .rank_ulist .list_urank li .medal {
+  float: right;
+  width: 10.5%;
+  margin-top: 1%;
+}
+#cRankPage {
+  background: linear-gradient(#f9d166, #fcdf90);
+  position: relative;
+}
+#cRankPage .copyright {
+  float: left;
+  color: #fa9f3e;
+  margin-top: 5%;
+}
+#cRankPage .btnContainer {
+  width: 85%;
+  margin: 5% auto;
+  text-align: center;
+}
+#cRankPage .btnContainer div {
+  display: inline-block;
+  font-size: 13px;
+  padding: 6px 0;
+  width: 95px;
+}
+#cRankPage .list_container {
+  width: 100%;
+  position: relative;
+}
+#cRankPage .list_container .list_title {
+  width: 64.67%;
+  position: relative;
+  left: -14%;
+  top: 0;
+  z-index: 100;
+}
+#cRankPage .list_container .rank_clist {
+  width: 84.5%;
+  margin: 0 auto;
+  margin-top: -15%;
+  border: 2px solid #623118;
+  box-shadow: 1px 2px 0 2px #f5592d ,0 0 0 10px #fa976b,0 0 0 12px #623118;
+  border-radius: 10px;
+  background: #fcf8e8;
+}
+#cRankPage .list_container .rank_clist .user_avatar {
+  width: 23.3%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 17.5%;
+  border-radius: 50%;
+  border: 2px solid #623118;
+}
+#cRankPage .list_container .rank_clist .nickname {
+  color: #fcb103;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1.2%;
+  margin-bottom: 3%;
+}
+#cRankPage .list_container .rank_clist .rank {
+  text-align: center;
+  color: #e87d60;
+  font-family: hb;
+}
+#cRankPage .list_container .rank_clist .rank .ranknum {
+  font-family: hb;
+  color: #53ccc1;
+  font-size: 25px;
+}
+#cRankPage .list_container .rank_clist .list_crank {
+  list-style: none;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+#cRankPage .list_container .rank_clist .list_crank li {
+  width: 90%;
+  overflow: hidden;
+  padding: 3% 5%;
+}
+#cRankPage .list_container .rank_clist .list_crank li .list_avatar {
+  border-radius: 50%;
+  border: 1px solid #623118;
+  float: left;
+  width: 11.67%;
+}
+#cRankPage .list_container .rank_clist .list_crank li .c_name {
+  color: #f08b3a;
+  font-size: 13px;
+  font-weight: 600;
+  float: left;
+  margin-left: 5%;
+  margin-top: 4%;
+}
+#cRankPage .list_container .rank_clist .list_crank li .list_ranknum {
+  font-family: hb;
+  font-size: 20px;
+  float: right;
+  margin-right: 4.5%;
+  padding: 2% 0;
+  color: #fc932b;
+}
+#cRankPage .list_container .rank_clist .list_crank li .medal {
   float: right;
   width: 10.5%;
   margin-top: 1%;
