@@ -3,11 +3,12 @@
  */
 
 var prefix = "/19thTuanShiWei";
-var questionLink = prefix + "/index.php/Home/Index/getQuestion";
-var answerLink = prefix + "/index.php/Home/Index/answer";
-var personalLink = prefix + "/index.php/Home/Index/personal";
-var rankLink = prefix + "/index.php/Home/Index/personRank";
-var classrankLink = prefix + "/index.php/Home/Index/classRank";
+var questionLink = prefix + "/Home/Index/getQuestion";
+var answerLink = prefix + "/Home/Index/answer";
+var personalLink = prefix + "/Home/Index/personal";
+var rankLink = prefix + "/Home/Index/personRank";
+var universityrankLink = prefix + "/Home/Index/schoolRank?level=benke";
+var collegerankLink = prefix + "/Home/Index/schoolRank?level=zhuanke";
 
 function fillQuestion(data,qc,ops,ops_sell){
     for(var i = 0 ; i < ops.length ; i++){
@@ -69,18 +70,11 @@ $(function(){
     var Description = $('.Description');
     var ranks = $('.list_rank');
     var top3 = ranks.find('li');
-    var classRankBtn = $('.classRank');
-    var classranks = $('.classlist_rank');
-    var top3class = classranks.find('li');
     var rankBtn_flag = 0;
-    var classranknum = $('.classranknum');
     var rank_load = 0;
-    var classrankBtn_flag = 0;
     var returnHome = $('.returnHome');
-    var classrank_load = 0;
     var personalRank = $('.personalRank');
     var saveTop3 = ranks.html();
-    var saveClassTop3 = classranks.html();
     var closeP = $('.closeP');
     var mask = $('.mask');
     var programerHolder = $('.programerHolder');
@@ -106,62 +100,6 @@ $(function(){
     ReplayBtn.on('click',function(){
         $.mobile.changePage('#homePage',{
             transition:'flow'
-        })
-    });
-    classRankBtn.on('click',function(){
-        if(classrankBtn_flag){
-            return false
-        }
-        classrankBtn_flag = 1;
-        $.mobile.loading('show');
-        $.get(classrankLink,function(data){
-            $.mobile.loading('hide');
-            classrankBtn_flag = 0;
-            if(data.status == 200){
-                user_avatar.attr('src',data.data.personal.avatar);
-                nickname.html(data.data.personal.nickname);
-                classranknum.html(data.data.personal.rank);
-                if(classrank_load){
-                    classranks.html("");
-                    classranks.html(saveClassTop3);
-                    top3class = classranks.find('li');
-                    for(var i = 0 ; i < data.data.list.length ; i++){
-                        if(i<3){
-                            top3class.eq(i).find('.list_college').html(data.data.list[i].college);
-                            top3class.eq(i).find('.list_classNum').html(data.data.list[i].class_id+'班');
-                        }else{
-                            if(i%2 == 0){
-                                classranks.append('<li style="background: #feebcb">' +'<span class="list_college">'+data.data.list[i].college+'</span>'+'<span class="list_classNum">'+data.data.list[i].class_id+'班'+'</span>'+'<span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
-                            }else{
-                                classranks.append('<li>' +'<span class="list_college">'+data.data.list[i].college+'</span>'+'<span class="list_classNum">'+data.data.list[i].class_id+'班'+'</span>'+'<span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
-                            }
-                        }
-                    }
-                    $.mobile.changePage('#classRankPage',{
-                        transition: 'flow'
-                    });
-                    return false;
-                }else {
-                    for(var i = 0 ; i < data.data.list.length ; i++){
-                        if(i<3){
-                            top3class.eq(i).find('.list_college').html(data.data.list[i].college);
-                            top3class.eq(i).find('.list_classNum').html(data.data.list[i].class_id+'班');
-                        }else{
-                            if(i%2 == 0){
-                                classranks.append('<li style="background: #feebcb">' +'<span class="list_college">'+data.data.list[i].college+'</span>'+'<span class="list_classNum">'+data.data.list[i].class_id+'班'+'</span>'+'<span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
-                            }else{
-                                classranks.append('<li>' +'<span class="list_college">'+data.data.list[i].college+'</span>'+'<span class="list_classNum">'+data.data.list[i].class_id+'班'+'</span>'+'<span class="list_ranknum">'+data.data.list[i].rank+'</span></li>');
-                            }
-                        }
-                    }
-                    classrank_load = 1;
-                }
-                $.mobile.changePage('#classRankPage',{
-                    transition: 'flow'
-                })
-            }else{
-                alert(data.status);
-            }
         })
     });
     RankBtn.on('click',function(){
@@ -274,7 +212,6 @@ $(function(){
         $(this).css('background','#ffffff');
         judged = $(this);
     });
-
     fill_sell.on('click',function(){
         if($(this).attr('selected-flag') == '0'){
             if(fill_flag == q_now.answer.length){

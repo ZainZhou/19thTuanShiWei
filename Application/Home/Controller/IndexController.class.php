@@ -12,7 +12,7 @@ class IndexController extends BaseController {
     public function index() {
         $openid = session('openid');
 
-        $user = M('user')->where(array('openid' => $openid))->find();
+        $user = M('users')->where(array('openid' => $openid))->find();
         $isComplete = 1;
         if ($user['level'] == '') {
             $isComplete = 0;
