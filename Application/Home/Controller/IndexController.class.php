@@ -206,12 +206,18 @@ class IndexController extends BaseController {
 
     public function udpatePersonalInfo() {
         $phone = I('post.phone');
-        $school = I('post.school');
-        $name = I('post.name'); //万一不和谐呢
+        $school = I('post.school', '');
+        $name = I('post.name', ''); //万一不和谐呢
         if (!$this->isMobile($phone)) {
             $this->ajaxReturn(array(
                 'status' => 403,
                 'info'   => '请输入正确格式的手机号~'
+            ));
+        }
+        if ($school == '' || $name == '') {
+            $this->ajaxReturn(array(
+                'status' => 403,
+                'info'   => '请输入正确的姓名或学校~'
             ));
         }
         $openid = session('openid');
