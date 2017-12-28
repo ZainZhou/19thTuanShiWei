@@ -98,7 +98,7 @@
     width: 19%;
     display: block;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 17.5%;
     border-radius: 50%;
     border: 2px solid #623118;
   }
@@ -506,118 +506,6 @@
     margin-bottom: 3%;
   }
 }
-#UniversityRankPage{
-  background: linear-gradient(#f9d166,#fcdf90);
-  position: relative;
-  .copyright{
-    float: left;
-    color: #fa9f3e;
-    margin-top: 5%;
-  }
-  .btnContainer{
-    width: 85%;
-    margin: 5% auto;
-    text-align: center;
-    div{
-      display:inline-block;
-      font-size: 13px;
-      padding: 6px 0;
-      width: 95px;
-    }
-  }
-  .list_container{
-    width: 100%;
-    position: relative;
-    .list_title{
-      width: 64.67%;
-      position: relative;
-      left: -14%;
-      top:0;
-      z-index: 100;
-    }
-    .rank_list{
-      width: 84.5%;
-      margin: 0 auto;
-      margin-top: -15%;
-      border: 2px solid #623118;
-      box-shadow:1px 2px 0 2px #f5592d ,0 0 0 10px #fa976b,0 0 0 12px #623118;
-      border-radius: 10px;
-      background: #fcf8e8;
-      .user_avatar{
-        width: 23.3%;
-        display: block;
-        margin: 0 auto;
-        margin-top: 15%;
-        border-radius: 50%;
-        border: 2px solid #623118;
-      }
-      .nickname{
-        color: #fcb103;
-        font-weight: 700;
-        text-align: center;
-        margin-top: 1.2%;
-        margin-bottom: 3%;
-      }
-      .rank{
-        text-align: center;
-        color: #e87d60;
-        font-family: hb;
-        .classranknum{
-          font-family: hb;
-          color: #53ccc1;
-          font-size: 25px;
-        }
-      }
-      .studyBtn{
-        display: block;
-        margin: 3% auto;
-        width: 29.167%;
-      }
-      .classlist_rank{
-        list-style: none;
-        width: 100%;
-        border-radius: 8px;
-        overflow: hidden;
-        padding-bottom: 10px;
-        li{
-          width: 90%;
-          overflow: hidden;
-          padding: 3% 5%;
-          span{
-            color: #f46e49;
-          }
-          .list_college{
-            border-radius: 50%;
-            float: left;
-            font-size: 12px;
-            width: 33%;
-            padding-top: 5%;
-          }
-          .list_classNum{
-            font-size: 13px;
-            font-weight: 600;
-            float: left;
-            margin-left: 5%;
-            margin-top: 5%;
-          }
-          .list_ranknum{
-            font-family: hb;
-            font-size: 20px;
-            float: right;
-            margin-right: 4.5%;
-            padding: 2% 0;
-            color: #fc932b;
-          }
-          .medal{
-            float: right;
-            width: 10.5%;
-            margin-top: 1%;
-          }
-        }
-      }
-    }
-  }
-}
 #rankPage{
   background: linear-gradient(#f9d166,#fcdf90);
   position: relative;
@@ -702,6 +590,110 @@
             width: 11.67%;
           }
           .list_nickname{
+            color: #f08b3a;
+            font-size: 13px;
+            font-weight: 600;
+            float: left;
+            margin-left: 5%;
+            margin-top: 4%;
+          }
+          .list_ranknum{
+            font-family: hb;
+            font-size: 20px;
+            float: right;
+            margin-right: 4.5%;
+            padding: 2% 0;
+            color: #fc932b;
+          }
+          .medal{
+            float: right;
+            width: 10.5%;
+            margin-top: 1%;
+          }
+        }
+      }
+    }
+  }
+}
+#uRankPage{
+  background: linear-gradient(#f9d166,#fcdf90);
+  position: relative;
+  .copyright{
+    float: left;
+    color: #fa9f3e;
+    margin-top: 5%;
+  }
+  .btnContainer{
+    width: 85%;
+    margin: 5% auto;
+    text-align: center;
+    div{
+      display:inline-block;
+      font-size: 13px;
+      padding: 6px 0;
+      width: 95px;
+    }
+  }
+  .list_container{
+    width: 100%;
+    position: relative;
+    .list_title{
+      width: 64.67%;
+      position: relative;
+      left: -14%;
+      top:0;
+      z-index: 100;
+    }
+    .rank_ulist{
+      width: 84.5%;
+      margin: 0 auto;
+      margin-top: -15%;
+      border: 2px solid #623118;
+      box-shadow:1px 2px 0 2px #f5592d ,0 0 0 10px #fa976b,0 0 0 12px #623118;
+      border-radius: 10px;
+      background: #fcf8e8;
+      .user_avatar{
+        width: 23.3%;
+        display: block;
+        margin: 0 auto;
+        margin-top: 17.5%;
+        border-radius: 50%;
+        border: 2px solid #623118;
+      }
+      .nickname{
+        color: #fcb103;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 1.2%;
+        margin-bottom: 3%;
+      }
+      .rank{
+        text-align: center;
+        color: #e87d60;
+        font-family: hb;
+        .ranknum{
+          font-family: hb;
+          color: #53ccc1;
+          font-size: 25px;
+        }
+      }
+      .list_urank{
+        list-style: none;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        padding-bottom: 10px;
+        li{
+          width: 90%;
+          overflow: hidden;
+          padding: 3% 5%;
+          .list_avatar{
+            border-radius: 50%;
+            border: 1px solid #623118;
+            float: left;
+            width: 11.67%;
+          }
+          .u_name{
             color: #f08b3a;
             font-size: 13px;
             font-weight: 600;

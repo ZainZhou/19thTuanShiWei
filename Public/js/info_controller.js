@@ -10,8 +10,7 @@ $(function(){
     var h = 60*36+5;
     var usr_school = $('.usr_school');
     var apply_info = $('.apply_info');
-    var info_input = $('.info_list > li > input');
-    var info_path = "";
+    var info_path = "/19thTuanShiWei/localhost/19thTuanShiWei/Home/Index/udpatePersonalInfo";
     var close_tip = $('.close_tip');
     var tip_box = $('.tip_box');
     close_tip.on('click',function(){
