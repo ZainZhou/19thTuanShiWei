@@ -12,8 +12,10 @@ $(function(){
     var apply_info = $('.apply_info');
     var close_tip = $('.close_tip');
     var tip_box = $('.tip_box');
+    var oMask = $('.mask');
     close_tip.on('click',function(){
        tip_box.hide();
+       oMask.hide();
         $.mobile.changePage('#homePage',{
             transition:'flow'
         });
@@ -35,6 +37,7 @@ $(function(){
             $.mobile.loading('hide');
             if(data.status == 200){
                 tip_box.show();
+                oMask.show();
                 $('.usr_name').val("");
                 $('.usr_school').val("");
                 $('.usr_phone').val("");
