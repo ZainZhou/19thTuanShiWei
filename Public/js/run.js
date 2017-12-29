@@ -300,8 +300,14 @@ $(function(){
 
 
     startBtn.on('click',function(){
+        if(!isComplete){
+            $.mobile.changePage('#infoPage',{
+                transition:'slide'
+            });
+            return false;
+        }
         if(start_flag){
-            return false
+            return false;
         }
         start_flag = true;
         $.mobile.loading('show');
@@ -332,6 +338,8 @@ $(function(){
             }
         })
     });
+
+
     chose_btn.on('click',function(){
         if($(this).attr("selected-flag") == '0'){
             q_now.selected += $(this).attr('data-flag');

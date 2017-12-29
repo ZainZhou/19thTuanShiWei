@@ -39,6 +39,7 @@ $(function(){
                 $('.usr_name').val("");
                 $('.usr_school').val("");
                 $('.usr_phone').val("");
+                isComplete = 1;
             }else{
                 alert(data.status);
             }
