@@ -577,6 +577,7 @@
   text-align: center;
   color: #e87d60;
   font-family: hb;
+  font-size: 13px;
 }
 #rankPage .list_container .rank_list .rank .ranknum {
   font-family: hb;
@@ -686,6 +687,7 @@
   text-align: center;
   color: #e87d60;
   font-family: hb;
+  font-size: 13px;
 }
 #uRankPage .list_container .rank_ulist .rank .ranknum {
   font-family: hb;
@@ -790,6 +792,7 @@
   text-align: center;
   color: #e87d60;
   font-family: hb;
+  font-size: 13px;
 }
 #cRankPage .list_container .rank_clist .rank .ranknum {
   font-family: hb;
