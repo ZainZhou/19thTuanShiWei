@@ -41,7 +41,7 @@ class IndexController extends BaseController {
         } else {
             $question = $this->getSelect();
             ;
-            $question['question'] = mb_ereg_replace('（(.*)）', '（    ）', $question['question'], 'utf-8');
+            $question['question'] = mb_ereg_replace('（(.*)）', '（&nbsp;&nbsp;&nbsp;&nbsp）', $question['question'], 'utf-8');
         }
         $data['last_question_id'] = $question['id'];
         $users->where(array('openid' => $openid))->save($data);
