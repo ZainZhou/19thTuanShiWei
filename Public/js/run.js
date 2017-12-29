@@ -121,6 +121,10 @@ $(function(){
             transition:'flow'
         })
     });
+
+
+
+
     RankBtn.on('click',function(){
         if(rankBtn_flag){
             return false
@@ -438,7 +442,7 @@ $(function(){
                 fill_sell.css({'background':'#ffffff','color':'#f88364'});
                 judge_btn.css('background','#fea087');
                 Description.css('visibility','hidden');
-                if(current < 5){
+                if(current < 10){
                     var _data = {};
                     _data.new = true;
                     $.post(questionLink,_data,function(data){
