@@ -14,7 +14,7 @@ class IndexController extends BaseController {
 
         $user = M('users')->where(array('openid' => $openid))->find();
         $isComplete = 1;
-        if ($user['level'] == '') {
+        if ($user['level'] == '' || $user['level'] == null) {
             $isComplete = 0;
         }
         $signature = $this->JSSDKSignature();
