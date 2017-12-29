@@ -40,6 +40,8 @@ class IndexController extends BaseController {
             $question = $this->getJudge();
         } else {
             $question = $this->getSelect();
+            ;
+            $question['question'] = mb_ereg_replace('（(.*)）', '（    ）', $question['question'], 'utf-8');
         }
         $data['last_question_id'] = $question['id'];
         $users->where(array('openid' => $openid))->save($data);
