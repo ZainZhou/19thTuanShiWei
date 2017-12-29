@@ -6,14 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!--<link rel="stylesheet" href="__PUBLIC__/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">-->
-    <!--<script src = '__PUBLIC__/js/jquery-2.1.4.min.js'></script>-->
-    <!--<script src = '__PUBLIC__/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js'></script>-->
-    <!--<script src = '__PUBLIC__/js/setStyle.js?v={:time()}'></script>-->
-    <!--<script src = '__PUBLIC__/js/QuestionClass.js?v={:time()}'></script>-->
-    <!--<script src = '__PUBLIC__/js/run.js?v={:time()}'></script>-->
-    <!--<link rel="stylesheet" href="__PUBLIC__/css/style.css?v={:time()}">-->
-    <!--<link rel="stylesheet" href="__PUBLIC__/css/animate.min.css?v={:time()}">-->
     <link rel="stylesheet" href="__PUBLIC__//js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
     <script src = '__PUBLIC__/js/jquery-2.1.4.min.js'></script>
     <script src = '__PUBLIC__/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js'></script>
@@ -80,8 +72,8 @@
         </div>
         <img src="__PUBLIC__/images/VoiceofYoung.png?v=1" alt="" class="logo">
         <p class="info_title">请完善基本信息</p>
-        <img src="__PUBLIC__/images/boy.png" alt="" class="user_avatar">
-        <p class="info_nickname">小四月</p>
+        <img src="" alt="" class="user_avatar">
+        <p class="info_nickname"></p>
         <ul class="info_list">
             <li>
                 <span class="info_name">姓名</span>
@@ -258,6 +250,9 @@
     </div>
     <div data-role="page" id="rankPage">
         <img src="__PUBLIC__/images/VoiceofYoung.png" alt="" class="logo">
+        <div class="return_home">
+
+        </div>
         <div class="list_container">
             <img src="__PUBLIC__/images/rank_title.png" alt="" class="list_title">
             <div class="rank_list">
@@ -293,43 +288,81 @@
         <img src="__PUBLIC__/images/VoiceofYoung.png" alt="" class="logo">
         <div class="list_container">
             <img src="__PUBLIC__/images/utitle.png" alt="" class="list_title">
+            <div class="return_home">
+
+            </div>
             <div class="rank_ulist">
                 <img src="__PUBLIC__/images/boy.png" alt="" class="user_avatar">
                 <p class="nickname">123</p>
-                <p class="rank">我的学校在测试中排名：第 <span class="ranknum"></span> 名</p>
+                <p class="rank">我所在的学校在竞赛中排名：第 <span class="ranknum"></span> 名</p>
                 <div class="btnContainer">
                     <div class="personalRank r_btn btn" style="margin-right: 10%">个人榜单</div>
                     <div class="collegeRank y_btn btn">高职高专榜单</div>
                 </div>
                 <ul class="list_urank">
                     <li style="background: #feebcb">
-                        <span class="u_name">重庆大学</span>
+                        <span class="u_name"></span>
                         <img src="__PUBLIC__/images/gold.png" alt="" class="medal">
                     </li>
                     <li>
-                        <span class="u_name">重庆邮电大学</span>
+                        <span class="u_name"></span>
                         <img src="__PUBLIC__/images/silver.png" alt="" class="medal">
                     </li>
                     <li style="background: #feebcb">
-                        <span class="u_name">西南大学</span>
+                        <span class="u_name"></span>
                         <img src="__PUBLIC__/images/copper.png" alt="" class="medal">
-                    </li>
-                    <li style="background: #feebcb">
-                        <span class="u_name">西南政法大学</span>
-                        <span class="list_ranknum">4</span>
                     </li>
                 </ul>
             </div>
         </div>
         <p class="copyright">©️红岩网校工作站</p>
     </div>
+
+
+    <div data-role="page" id="cRankPage">
+        <img src="__PUBLIC__/images/VoiceofYoung.png" alt="" class="logo">
+        <div class="list_container">
+            <img src="__PUBLIC__/images/ctitle.png" alt="" class="list_title">
+            <div class="return_home">
+
+            </div>
+            <div class="rank_clist">
+                <img src="__PUBLIC__/images/boy.png" alt="" class="user_avatar">
+                <p class="nickname"></p>
+                <p class="rank">我所在的学校在竞赛中排名：第 <span class="ranknum"></span> 名</p>
+                <div class="btnContainer">
+                    <div class="personalRank r_btn btn" style="margin-right: 10%">个人榜单</div>
+                    <div class="universityRank y_btn btn">本科榜单</div>
+                </div>
+                <ul class="list_crank">
+                    <li style="background: #feebcb">
+                        <span class="c_name"></span>
+                        <img src="__PUBLIC__/images/gold.png" alt="" class="medal">
+                    </li>
+                    <li>
+                        <span class="c_name"></span>
+                        <img src="__PUBLIC__/images/silver.png" alt="" class="medal">
+                    </li>
+                    <li style="background: #feebcb">
+                        <span class="c_name"></span>
+                        <img src="__PUBLIC__/images/copper.png" alt="" class="medal">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">©️红岩网校工作站</p>
+    </div>
+
+
+
+
     <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
         var isComplete = "{$isComplete}";
-        var shareTitle = '学习十九大精神 | 重邮共青团：“学报告 问问答”学习测试平台打榜啦';
-        var shareDesc = "重庆邮电大学红岩网校工作站原创开发";
-        var shareURL = "https://wx.idsbllp.cn/game/19thQuestionAnswer/";
-        var shareImg = "https://wx.idsbllp.cn/game/19thQuestionAnswer/Public/images/share.png";
+        var shareTitle = '学报告 问问答 | 重庆大学生学习十九大精神知识竞赛';
+        var shareDesc = "主办：重庆团市委、市学联 承办：重庆大学、重庆邮电大学";
+        var shareURL = "https://wx.idsbllp.cn/game/19thTuanShiWei/";
+        var shareImg = "https://wx.idsbllp.cn/game/19thTuanShiWei/Public/images/share.png";
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: 'wx81a4a4b77ec98ff4', // 必填，公众号的唯一标识

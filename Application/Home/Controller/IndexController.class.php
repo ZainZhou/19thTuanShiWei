@@ -14,7 +14,7 @@ class IndexController extends BaseController {
 
         $user = M('users')->where(array('openid' => $openid))->find();
         $isComplete = 1;
-        if ($user['level'] == '') {
+        if ($user['level'] == '' || $user['level'] == null) {
             $isComplete = 0;
         }
         $signature = $this->JSSDKSignature();
@@ -225,7 +225,7 @@ class IndexController extends BaseController {
             ));
         }
         $openid = session('openid');
-        $level = M('school')->where(array('school' => $school))->getField('level');
+        $level = M('school')->where(array('school_name' => $school))->getField('level');
         M('users')->where(array('openid' => $openid))->save(
             array(
                 'phone' => $phone,
