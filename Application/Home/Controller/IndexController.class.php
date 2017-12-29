@@ -221,7 +221,7 @@ class IndexController extends BaseController {
             ));
         }
         $openid = session('openid');
-        $level = M('school')->where(array('school' => $school))->getField('level');
+        $level = M('school')->where(array('school_name' => $school))->getField('level');
         M('users')->where(array('openid' => $openid))->save(
             array(
                 'phone' => $phone,
