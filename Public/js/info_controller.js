@@ -10,7 +10,6 @@ $(function(){
     var h = 60*36+5;
     var usr_school = $('.usr_school');
     var apply_info = $('.apply_info');
-    var info_path = "/19thTuanShiWei/localhost/19thTuanShiWei/Home/Index/udpatePersonalInfo";
     var close_tip = $('.close_tip');
     var tip_box = $('.tip_box');
     close_tip.on('click',function(){
@@ -41,7 +40,7 @@ $(function(){
                 $('.usr_phone').val("");
                 isComplete = 1;
             }else{
-                alert(data.status);
+                alert(data.info);
             }
         })
     });

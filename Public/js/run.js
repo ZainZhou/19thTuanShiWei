@@ -9,7 +9,7 @@ var personalLink = prefix + "/Home/Index/personal";
 var rankLink = prefix + "/Home/Index/personRank";
 var universityrankLink = prefix + "/Home/Index/schoolRank?level=benke";
 var collegerankLink = prefix + "/Home/Index/schoolRank?level=zhuanke";
-
+var info_path = prefix + "/Home/Index/udpatePersonalInfo";
 function fillQuestion(data,qc,ops,ops_sell){
     for(var i = 0 ; i < ops.length ; i++){
         ops[i].css('display','none');
@@ -93,7 +93,6 @@ $(function(){
     var d_btn = $('.developer_btn');
     var return_home = $('.return_home');
     return_home.on('click',function(){
-        console.log(2);
         $.mobile.changePage('#homePage',{
             transition:'slide'
         })
@@ -300,7 +299,8 @@ $(function(){
 
 
     startBtn.on('click',function(){
-        if(!isComplete){
+        if(isComplete == 0){
+
             $.mobile.changePage('#infoPage',{
                 transition:'slide'
             });
