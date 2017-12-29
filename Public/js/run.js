@@ -300,7 +300,14 @@ $(function(){
 
     startBtn.on('click',function(){
         if(isComplete == 0){
-
+            $.get(rankLink,function(data){
+                if(data.status == 200){
+                    $('#infoPage .user_avatar').attr('src',data.data.personal.avatar);
+                    $('#infoPage .info_nickname').html(data.data.personal.nickname)
+                }else{
+                    alert(data.info)
+                }
+            });
             $.mobile.changePage('#infoPage',{
                 transition:'slide'
             });
