@@ -159,7 +159,7 @@ class IndexController extends BaseController {
         $rank = $row[0]['rank'];
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
-        $list = $users->order('top_score desc, avg_time asc')->field('nickname, avatar, top_score')->limit(50)->select();
+        $list = $users->order('top_score desc, avg_time asc')->field('nickname, avatar')->limit(50)->select();
         $i = 0;
         foreach ($list as &$v) {
             $i++;
@@ -184,12 +184,16 @@ class IndexController extends BaseController {
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
         $model = new Model();
-        $rows = $model->query("select school, nickname, avatar, rank from (select *, (@rank := @rank + 1)rank from (select * from users where school != '' and level = '$level' order by top_score desc, avg_time asc limit 50)t, (select @rank := 0)a)b");
-        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by top_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
+        $rows = $model->query("select DISTINCT school, rank from (select *, (@rank := @rank + 1)rank from (select school, sum(top_score) as score from users where school != '' and level = '$level' group by school order by score desc limit 50)t, (select @rank := 0)a)b  order by rank asc");
         $rank = '∞';
-        if (count($row) != 0) {
-            $rank = $row[0]['rank'];
+        if($user['level'] == $level) {
+            $userSchool = $user['school'];
+            $row = $model->query("select DISTINCT school, rank from (select *, (@rank := @rank + 1)rank from (select school, sum(top_score) as score from users where school != '' and level = '$level' group by school order by score desc)t, (select @rank := 0)a)b WHERE school='$userSchool'");
+            if (count($row) != 0) {
+                $rank = $row[0]['rank'];
+            }
         }
+
 
         $this->ajaxReturn(array(
             'status' => 200,
@@ -374,4 +378,17 @@ class IndexController extends BaseController {
 //        }
 //    }
 
+    public function testData() {
+        $users = M('users');
+        $schools = M('school')->select();
+        foreach ($schools as $school) {
+            $data = array(
+                'nickname' => $school['school_name'].'的周老板',
+                'level' => $school['level'],
+                'school' => $school['school_name'],
+                'name' => '周老板请客'
+            );
+            $users->add($data);
+        }
+    }
 }
