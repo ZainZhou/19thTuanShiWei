@@ -299,6 +299,7 @@ $(function(){
 
 
     startBtn.on('click',function(){
+        mask.hide();
         if(isComplete == 0){
             $.get(rankLink,function(data){
                 if(data.status == 200){
