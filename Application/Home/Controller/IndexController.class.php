@@ -32,6 +32,7 @@ class IndexController extends BaseController {
         $data = $users->where(array('openid' => $openid))->find();
 
         if ($data['current_exam_process'] == 0) {
+            session('time', time());
             $data['last_score'] = 0;
             $data['current_exam_process'] += 1;
         }
@@ -45,7 +46,6 @@ class IndexController extends BaseController {
         }
         $data['last_question_id'] = $question['id'];
         $users->where(array('openid' => $openid))->save($data);
-        session('time', time());
         $this->ajaxReturn(array(
             'status'  => 200,
             'data'    => $question,
