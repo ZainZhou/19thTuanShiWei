@@ -139,14 +139,16 @@ class IndexController extends BaseController {
         $openid = session('openid');
         $users = M('users');
         $user = $users->where(array('openid' => $openid))->find();
-        $model = new Model();
-        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by top_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
-        $rank = $row[0]['rank'];
+//        $model = new Model();
+//        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by last_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
+//        $rank = $row[0]['rank'];
+        $past = session('time');
+        $cost = time() - $past;
         $data = array(
             'correct' => $user['last_score']/20,
             'last_score' => $user['last_score'],
             'top_score' => $user['top_score'],
-            'rank' => $rank,
+            'rank' => $cost,
         );
         $this->ajaxReturn(array(
             'status' => 200,
