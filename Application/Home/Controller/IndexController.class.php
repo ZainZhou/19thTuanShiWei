@@ -118,6 +118,7 @@ class IndexController extends BaseController {
         }
         $data['current_exam_process'] += 1;
         if ($data['current_exam_process'] > $this->total) {
+            session('end', time());
             if ($data['last_score'] == 200) {//太僵硬了, 采用欺骗的手段了
                 $past = session('time');
                 $now = time();
@@ -143,7 +144,8 @@ class IndexController extends BaseController {
 //        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by last_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
 //        $rank = $row[0]['rank'];
         $past = session('time');
-        $cost = time() - $past;
+        $now = session('end');
+        $cost = $now - $past;
         $data = array(
             'correct' => $user['last_score']/20,
             'last_score' => $user['last_score'],
