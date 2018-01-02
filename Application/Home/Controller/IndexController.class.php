@@ -32,7 +32,7 @@ class IndexController extends BaseController {
         $data = $users->where(array('openid' => $openid))->find();
 
         if ($data['current_exam_process'] == 0) {
-            session('time', time());
+            $data['class_id'] = time();//强行用class_id字段作为开始时间
             $data['last_score'] = 0;
             $data['current_exam_process'] += 1;
         }
@@ -143,7 +143,7 @@ class IndexController extends BaseController {
 //        $model = new Model();
 //        $row = $model->query("select * from (select *, (@rank := @rank + 1)rank from (select openid from users order by last_score desc, avg_time asc)t, (select @rank := 0)a)b WHERE openid='$openid'");
 //        $rank = $row[0]['rank'];
-        $past = session('time');
+        $past = $user['class_id'];
         $now = session('end');
         $cost = $now - $past;
         $data = array(
