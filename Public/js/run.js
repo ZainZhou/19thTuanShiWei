@@ -32,7 +32,7 @@ function fillQuestion(data,qc,ops,ops_sell){
             return q;
         case 'multiSelect':
             var q = new Choice();
-            q.init(1,qc,data.answer,data.question,data.select,ops_sell[2],ops[2],data.type);
+            q.init(1,qc,data.answer,data.question+"（多选题）",data.select,ops_sell[2],ops[2],data.type);
             q.fill();
             return q;
         default:
