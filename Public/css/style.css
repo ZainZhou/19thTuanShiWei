@@ -11,8 +11,8 @@
 }
 .logo {
   float: left;
-  width: 25.33%;
-  margin: 2.4%;
+  width: 27%;
+  margin: 1.4%;
 }
 .btn {
   width: 38%;
@@ -294,8 +294,8 @@
 #homePage .logo {
   float: none;
   position: absolute;
-  top: 2.4%;
-  left: 2.4%;
+  top: 0.4%;
+  left: 0.4%;
 }
 #homePage .slogan_container {
   background: url("../images/HomePage_slogan.png") center no-repeat;
