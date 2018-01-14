@@ -298,6 +298,9 @@ $(function(){
 
 
 
+
+
+
     startBtn.on('click',function(){
         mask.hide();
         if(isComplete == 0){
