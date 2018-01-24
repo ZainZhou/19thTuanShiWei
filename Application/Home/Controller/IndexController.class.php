@@ -120,7 +120,7 @@ class IndexController extends BaseController {
         if ($data['current_exam_process'] > $this->total) {
             session('end', time());
             if ($data['last_score'] == 200) {//太僵硬了, 采用欺骗的手段了
-                $past = session('time');
+                $past = $data['class_id'];
                 $now = time();
                if($data['avg_time'] > $now - $past || $data['avg_time'] == 0 )  {
                    $data['avg_time'] = $now - $past;
